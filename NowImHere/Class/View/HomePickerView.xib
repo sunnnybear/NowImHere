@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="HomePickerView" customModule="NowImHere" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="408" height="420"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L2q-H3-EN1">
+                    <rect key="frame" x="0.0" y="0.0" width="408" height="44"/>
+                    <items>
+                        <barButtonItem style="plain" id="WBc-jl-18B">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="A61-8T-aRs">
+                                <rect key="frame" x="20" y="7" width="77" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="キャンセル"/>
+                                <connections>
+                                    <action selector="cancelAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="tnT-LU-Feo"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="r3o-LO-lAZ"/>
+                        <barButtonItem style="plain" id="DBk-gJ-liL">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="PDe-04-sks">
+                                <rect key="frame" x="357" y="7" width="31" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="確定"/>
+                                <connections>
+                                    <action selector="doneAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="tBh-AV-acL"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </items>
+                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="barTintColor" red="0.97259992360000003" green="0.96958047150000004" blue="0.96933692689999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </toolbar>
+                <pickerView contentMode="scaleToFill" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="oA8-rw-gBq">
+                    <rect key="frame" x="0.0" y="44" width="408" height="376"/>
+                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </pickerView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="L2q-H3-EN1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="KWg-vp-Zfk"/>
+                <constraint firstItem="oA8-rw-gBq" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="R0Z-bd-FAz"/>
+                <constraint firstAttribute="trailing" secondItem="L2q-H3-EN1" secondAttribute="trailing" id="W1d-jG-oN1"/>
+                <constraint firstItem="L2q-H3-EN1" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ZgH-Ho-2vh"/>
+                <constraint firstItem="oA8-rw-gBq" firstAttribute="top" secondItem="L2q-H3-EN1" secondAttribute="bottom" id="f3J-bi-Gks"/>
+                <constraint firstItem="oA8-rw-gBq" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="sEr-nQ-qIW"/>
+                <constraint firstAttribute="bottom" secondItem="oA8-rw-gBq" secondAttribute="bottom" id="tDG-fn-x0H"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="pickerView" destination="oA8-rw-gBq" id="2xj-aI-N3i"/>
+                <outlet property="toolbar" destination="L2q-H3-EN1" id="Vti-kY-gOc"/>
+            </connections>
+            <point key="canvasLocation" x="47.826086956521742" y="-438.28125"/>
+        </view>
+    </objects>
+</document>

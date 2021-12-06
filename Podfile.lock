@@ -1,0 +1,28 @@
+PODS:
+  - Alamofire (4.7.3)
+  - Kingfisher (5.7.1)
+  - SCLAlertView (0.8)
+  - TransitionButton (0.5.2)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.7.0)
+  - Kingfisher
+  - SCLAlertView
+  - TransitionButton
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - Kingfisher
+    - SCLAlertView
+    - TransitionButton
+
+SPEC CHECKSUMS:
+  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  Kingfisher: 176d377ad339113c99ad4980cbae687f807e20fe
+  SCLAlertView: 6a77bb2edfc65e04dbe57725546cb4107a506b85
+  TransitionButton: fb271583d9c9e4bb116b97103047e5157653f233
+
+PODFILE CHECKSUM: 85b41a585ff71fc7a68651042cb46f03e88545bc
+
+COCOAPODS: 1.9.3
