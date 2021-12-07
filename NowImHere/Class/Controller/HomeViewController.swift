@@ -83,7 +83,8 @@ class HomeViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        startTimerForShowScrollIndicator()
+        self.tableView.flashScrollIndicators()
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -553,16 +554,6 @@ class HomeViewController: UIViewController {
     @objc func firstButton() {
         print("First button tapped")
     }
-    
-    @objc func showScrollIndicatorsInContacts() {
-            UIView.animate(withDuration: 0.001) {
-                self.tableView.flashScrollIndicators()
-            }
-        }
-        
-    func startTimerForShowScrollIndicator() {
-        self.timerForShowScrollIndicator = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(self.showScrollIndicatorsInContacts), userInfo: nil, repeats: true)
-        }
     
 }
 
