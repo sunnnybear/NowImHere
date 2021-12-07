@@ -210,19 +210,19 @@ class HomeViewController: UIViewController {
             BtnStart.isEnabled  = true
             BtnReturn.isEnabled = false
             BtnBreak.isEnabled  = false
-            BtnEnd.isEnabled    = false
+            BtnEnd.isEnabled    = true
         case "0": // 点击 出勤
-            BtnStart.isEnabled  = false
+            BtnStart.isEnabled  = true
             BtnReturn.isEnabled = true
             BtnBreak.isEnabled  = false
             BtnEnd.isEnabled    = true
         case "1": // 点击 休息开始
-            BtnStart.isEnabled  = false
+            BtnStart.isEnabled  = true
             BtnReturn.isEnabled = false
             BtnBreak.isEnabled  = true
-            BtnEnd.isEnabled    = false
+            BtnEnd.isEnabled    = true
         case "2": // 点击 休息终了
-            BtnStart.isEnabled  = false
+            BtnStart.isEnabled  = true
             BtnReturn.isEnabled = true
             BtnBreak.isEnabled  = false
             BtnEnd.isEnabled    = true
@@ -230,7 +230,7 @@ class HomeViewController: UIViewController {
             BtnStart.isEnabled  = true
             BtnReturn.isEnabled = false
             BtnBreak.isEnabled  = false
-            BtnEnd.isEnabled    = false
+            BtnEnd.isEnabled    = true
         default:
             BtnStart.isEnabled  = false
             BtnReturn.isEnabled = false
