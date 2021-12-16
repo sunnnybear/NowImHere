@@ -105,9 +105,9 @@
             filePath = "NowImHere/Class/Controller/HomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "394"
-            endingLineNumber = "394"
-            landmarkName = "TouchReturn(sender:)"
+            startingLineNumber = "422"
+            endingLineNumber = "422"
+            landmarkName = "TouchBreak(sender:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -153,9 +153,9 @@
             filePath = "NowImHere/Class/Controller/HomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "432"
-            endingLineNumber = "432"
-            landmarkName = "TouchBreak(sender:)"
+            startingLineNumber = "460"
+            endingLineNumber = "460"
+            landmarkName = "TouchEnd(sender:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -444,22 +444,6 @@
             startingLineNumber = "41"
             endingLineNumber = "41"
             landmarkName = "requestDate(URLString:type:parameters:finishedCallback:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "8D93BC16-A08C-49E0-A433-EAF3E302BBFB"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "NowImHere/Class/ViewModel/HomeViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
-            landmarkName = "requestData(finishCallBack:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
