@@ -160,7 +160,7 @@ class HomeViewController: UIViewController {
     private func setupTopView () {
         if self.homeVM.articleArray?.count == 0 {
                 
-            self.homeVM.articleArray? = [["date" : "" ,"content" : "", "title" : "まだお知らせがないです"]]
+            self.homeVM.articleArray? = [["date" : "" ,"content" : "", "title" : "ただ今、お知らせはありません。"]]
             
         }
         
