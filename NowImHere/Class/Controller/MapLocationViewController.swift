@@ -91,17 +91,17 @@ class MapLocationController: UIViewController ,CLLocationManagerDelegate,MKMapVi
         mapView.userTrackingMode = MKUserTrackingMode.followWithHeading
         locationLabel.text="経度：".appendingFormat("%.8f", East)+"   "+"緯度：".appendingFormat("%.8f", Noth)
         
-//        //创建一个大头针对象
-//        let objectAnnotation = MKPointAnnotation()
-//        //设置大头针的显示位置
-//        objectAnnotation.coordinate = CLLocation(latitude: self.East,
-//                                                 longitude: self.Noth).coordinate
-//        //设置点击大头针之后显示的标题
-//        objectAnnotation.title = self.Address
-//        //设置点击大头针之后显示的描述
-////        objectAnnotation.subtitle = "南京市秦淮区秦淮河北岸中华路"
-//        //添加大头针
-//        mapView.addAnnotation(objectAnnotation)
+        //创建一个大头针对象
+        let objectAnnotation = MKPointAnnotation()
+        //设置大头针的显示位置
+        objectAnnotation.coordinate = CLLocation(latitude: self.East,
+                                                 longitude: self.Noth).coordinate
+        //设置点击大头针之后显示的标题
+        objectAnnotation.title = self.Address
+        //设置点击大头针之后显示的描述
+//        objectAnnotation.subtitle = "南京市秦淮区秦淮河北岸中华路"
+        //添加大头针
+        mapView.addAnnotation(objectAnnotation)
 //        locationNameLabel.text = "場所：" + Address
         getLocationName()
     }

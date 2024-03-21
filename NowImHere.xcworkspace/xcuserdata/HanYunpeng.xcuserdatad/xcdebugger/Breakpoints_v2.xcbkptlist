@@ -66,22 +66,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "7B8D213B-116C-4B18-8A0C-D275A5C45DE4"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "NowImHere/Class/Controller/HomeViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "327"
-            endingLineNumber = "327"
-            landmarkName = "TouchStart(sender:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "4E1DC78B-82AC-49CD-864F-2FF4591A3CF4"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -92,70 +76,6 @@
             startingLineNumber = "219"
             endingLineNumber = "219"
             landmarkName = "baseMessageView(_:event:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "2FA8CBAE-99BC-4D73-BDE2-65D727CF9DF8"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "NowImHere/Class/Controller/HomeViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "422"
-            endingLineNumber = "422"
-            landmarkName = "TouchReturn(sender:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "2FA8CBAE-99BC-4D73-BDE2-65D727CF9DF8 - 921b2a866019a186"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in ES.HomeViewController.TouchReturn(sender: Swift.AnyObject) -&gt; ()"
-                  moduleName = "ES"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hanyunpeng/Desktop/NowImHere/NowImHere/Class/Controller/HomeViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "377"
-                  endingLineNumber = "377"
-                  offsetFromSymbolStart = "44">
-               </Location>
-               <Location
-                  uuid = "2FA8CBAE-99BC-4D73-BDE2-65D727CF9DF8 - c6f5939cec008067"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in closure #1 () -&gt; () in ES.HomeViewController.TouchReturn(sender: Swift.AnyObject) -&gt; ()"
-                  moduleName = "ES"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hanyunpeng/Desktop/NowImHere/NowImHere/Class/Controller/HomeViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "378"
-                  endingLineNumber = "378"
-                  offsetFromSymbolStart = "24">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "32D4341E-43FC-4DDB-AFA9-46F417C1FC03"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "NowImHere/Class/Controller/HomeViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "460"
-            endingLineNumber = "460"
-            landmarkName = "TouchBreak(sender:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -460,6 +380,22 @@
             startingLineNumber = "57"
             endingLineNumber = "57"
             landmarkName = "requestData(state:workContent:position:positionLocal:dkKind:finishCallBack:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3D696F66-E372-49F8-B798-7A8CA7BB2F89"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NowImHere/Class/Controller/HomeViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "767"
+            endingLineNumber = "767"
+            landmarkName = "locationManager(_:didUpdateLocations:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

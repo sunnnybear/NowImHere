@@ -193,6 +193,8 @@ class HomeViewController: UIViewController {
             locationManager = CLLocationManager()
             locationManager.delegate = self as CLLocationManagerDelegate
             locationManager.startUpdatingLocation()
+            locationManager.requestWhenInUseAuthorization()
+
         }
         let timer = Timer.scheduledTimer(
             timeInterval: 1,
@@ -366,6 +368,7 @@ class HomeViewController: UIViewController {
 //        let icon = UIImage(named:"yonghu.png")
 //        let color = UIColor.orange
 //        _ = alert.showCustom("", subTitle: "", color: color, icon: icon!)
+        locationManager.startUpdatingLocation()
         let appearance = SCLAlertView.SCLAppearance(
             kTitleTop : AVTitleTop,
             kTitleHeight : 30.0,
@@ -399,6 +402,7 @@ class HomeViewController: UIViewController {
     
     /// 休息开始按钮点击
     @IBAction func TouchReturn(sender: AnyObject) {
+        locationManager.startUpdatingLocation()
         let appearance = SCLAlertView.SCLAppearance(
             kTitleTop : AVTitleTop,
             kTitleHeight : 30.0,
@@ -432,6 +436,7 @@ class HomeViewController: UIViewController {
     
     /// 休息结束按钮点击
     @IBAction func TouchBreak(sender: AnyObject) {
+        locationManager.startUpdatingLocation()
         let appearance = SCLAlertView.SCLAppearance(
             kTitleTop : AVTitleTop,
             kTitleHeight : 30.0,
@@ -552,6 +557,7 @@ class HomeViewController: UIViewController {
 //        let color = UIColor.orange
 //        _ = alert.showCustom("", subTitle: "", color: color, icon: icon!)
 //
+        locationManager.startUpdatingLocation()
         let appearance = SCLAlertView.SCLAppearance(
             kTitleTop : AVTitleTop,
             kTitleHeight : 30.0,
