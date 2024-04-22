@@ -97,7 +97,7 @@ class HomeViewController: UIViewController {
         view.endEditing(true)
     }
     override func viewWillAppear(_ animated: Bool) {
-        
+        locationManager.startUpdatingLocation()
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         let nav = self.navigationController?.navigationBar
         nav?.barStyle = UIBarStyle.default
@@ -110,7 +110,9 @@ class HomeViewController: UIViewController {
         //        textField.attributedPlaceholder = NSAttributedString(string: "作業内容を選択してください",
         //        attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
     }
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        locationManager.stopUpdatingLocation()
+    }
     deinit {
         /// 移除通知
         NotificationCenter.default.removeObserver(self)
@@ -767,7 +769,7 @@ extension HomeViewController: CLLocationManagerDelegate {
         Noth = newLocation.coordinate.longitude
 //        location="経度：".appendingFormat("%.8f", East)+" "+"経度：".appendingFormat("%.8f", Noth)
         location="".appendingFormat("%.8f", East)+"/".appendingFormat("%.8f", Noth)
-        locationManager.stopUpdatingLocation()
+//        locationManager.stopUpdatingLocation()
         let changeLocation:NSArray =  locations as NSArray
         let currentLocation = changeLocation.lastObject as! CLLocation
         let geoCoder = CLGeocoder()
