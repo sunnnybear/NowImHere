@@ -25,7 +25,7 @@ enum GCMarqueeDirectionType: Int {
 
 struct GCMarqueeModel {
     
-    private let titleFont: CGFloat = 12.0;
+    private let titleFont: CGFloat = 16.0;
     fileprivate static let padding: CGFloat = 18.0;
     fileprivate static let icon_title_margin: CGFloat = 10.0;
     private let defaultHeight: CGFloat = 40.0;
@@ -35,7 +35,7 @@ struct GCMarqueeModel {
     let title: String
     var itemWidth: CGFloat {
         get {
-            let strWidth = self.title.boundingRect(with: CGSize.init(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude), options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12.0)], context: nil).size.width
+            let strWidth = self.title.boundingRect(with: CGSize.init(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude), options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16.0)], context: nil).size.width
             return GCMarqueeModel.padding * 2 + GCMarqueeModel.icon_title_margin + strWidth + icon_width
         }
     }

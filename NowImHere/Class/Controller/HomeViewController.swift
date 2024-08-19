@@ -97,7 +97,7 @@ class HomeViewController: UIViewController {
         view.endEditing(true)
     }
     override func viewWillAppear(_ animated: Bool) {
-        
+        locationManager.startUpdatingLocation()
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         let nav = self.navigationController?.navigationBar
         nav?.barStyle = UIBarStyle.default
@@ -110,7 +110,9 @@ class HomeViewController: UIViewController {
         //        textField.attributedPlaceholder = NSAttributedString(string: "作業内容を選択してください",
         //        attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
     }
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        locationManager.stopUpdatingLocation()
+    }
     deinit {
         /// 移除通知
         NotificationCenter.default.removeObserver(self)
@@ -160,7 +162,7 @@ class HomeViewController: UIViewController {
     private func setupTopView () {
         if self.homeVM.articleArray?.count == 0 {
                 
-            self.homeVM.articleArray? = [["date" : "" ,"content" : "", "title" : "まだお知らせがないです"]]
+            self.homeVM.articleArray? = [["date" : "" ,"content" : "", "title" : "ただ今、お知らせはありません。"]]
             
         }
         
@@ -193,6 +195,8 @@ class HomeViewController: UIViewController {
             locationManager = CLLocationManager()
             locationManager.delegate = self as CLLocationManagerDelegate
             locationManager.startUpdatingLocation()
+            locationManager.requestWhenInUseAuthorization()
+
         }
         let timer = Timer.scheduledTimer(
             timeInterval: 1,
@@ -284,93 +288,123 @@ class HomeViewController: UIViewController {
     
     /// 出勤按钮点击
     @IBAction func TouchStart(sender: AnyObject) {
+//        let appearance = SCLAlertView.SCLAppearance(
+//            kTitleTop : 0.0,
+//            kTitleHeight : 0.0,
+//            kWindowWidth : kScreenSize.width-100,
+//            kTextHeight : 0.0,
+//            kTextViewdHeight : 0.0,
+//            kButtonHeight : 65,
+//            kTitleFont: UIFont(name: "HelveticaNeue", size: AVTitleFontSize)!,
+//            kTextFont: UIFont(name: "HelveticaNeue", size: 14)!,
+//            kButtonFont: UIFont(name: "HelveticaNeue-Bold", size: AVButtonFontSize)!,
+//            showCloseButton: false,
+//            showCircularIcon: false,
+//            shouldAutoDismiss: true,
+//            hideWhenBackgroundViewIsTapped: true
+//        )
+//        let color1 = UIColor.init(red: 26/255, green: 39/255, blue: 138/255, alpha: 1)
+//        let color2 = UIColor.init(red: 82/255, green: 38/255, blue: 138/255, alpha: 1)
+//        let alert = SCLAlertView(appearance: appearance)
+//        _ = alert.addButton("一般出勤", backgroundColor:color1) {
+//            let appearance = SCLAlertView.SCLAppearance(
+//                kTitleTop : AVTitleTop,
+//                kTitleHeight : 30.0,
+//                kWindowWidth : self.kScreenSize.width-100,
+//                kTextHeight : 0.0,
+//                kTextViewdHeight : 0.0,
+//                kButtonHeight : 65,
+//                kTitleFont: UIFont(name: "HelveticaNeue-Bold", size: AVTitleFontSize)!,
+//                kTextFont: UIFont(name: "HelveticaNeue", size: 14)!,
+//                kButtonFont: UIFont(name: "HelveticaNeue-Bold", size: AVButtonFontSize)!,
+//                showCloseButton: true,
+//                showCircularIcon: false,
+//                shouldAutoDismiss: true,
+//                hideWhenBackgroundViewIsTapped: true
+//            )
+//            let alert = SCLAlertView(appearance: appearance)
+//
+//            let icon = UIImage(named:"yonghu.png")
+//            let color = UIColor.init(red: 89/255, green: 95/255, blue: 144/255, alpha: 1)
+//
+//            _ = alert.showCustom("おはようございます！", subTitle: "", color: color, icon: icon!, closeButtonTitle:"確　認")
+//
+//            // 改变按钮状态
+//            self.homeButtonVM.requestData(state: "0", workContent: "", position: self.location , positionLocal: self.locationName ,dkKind: "0") {
+//                self.setupHomeVM()
+//                self.setupViews()
+//            }
+//            self.setupButtonState(state: "0")
+//        }
+//
+//        _ = alert.addButton("直　行", backgroundColor:color2) {
+//            let appearance = SCLAlertView.SCLAppearance(
+//                kTitleTop : AVTitleTop,
+//                kTitleHeight : 30.0,
+//                kWindowWidth : self.kScreenSize.width-100,
+//                kTextHeight : 0.0,
+//                kTextViewdHeight : 0.0,
+//                kButtonHeight : 65,
+//                kTitleFont: UIFont(name: "HelveticaNeue-Bold", size: AVTitleFontSize)!,
+//                kTextFont: UIFont(name: "HelveticaNeue", size: 14)!,
+//                kButtonFont: UIFont(name: "HelveticaNeue-Bold", size: AVButtonFontSize)!,
+//                showCloseButton: true,
+//                showCircularIcon: false,
+//                shouldAutoDismiss: true,
+//                hideWhenBackgroundViewIsTapped: true
+//            )
+//            let alert = SCLAlertView(appearance: appearance)
+//
+//            let icon = UIImage(named:"yonghu.png")
+//            let color = UIColor.init(red: 89/255, green: 95/255, blue: 144/255, alpha: 1)
+//
+//            _ = alert.showCustom("おはようございます！", subTitle: "", color: color, icon: icon!, closeButtonTitle:"確　認")
+//            // 改变按钮状态
+//            self.homeButtonVM.requestData(state: "0", workContent: "", position: self.location , positionLocal: self.locationName ,dkKind: "1") {
+//                self.setupHomeVM()
+//                self.setupViews()
+//            }
+//            self.setupButtonState(state: "0")
+//        }
+//
+//        let icon = UIImage(named:"yonghu.png")
+//        let color = UIColor.orange
+//        _ = alert.showCustom("", subTitle: "", color: color, icon: icon!)
+        locationManager.startUpdatingLocation()
         let appearance = SCLAlertView.SCLAppearance(
-            kTitleTop : 0.0,
-            kTitleHeight : 0.0,
-            kWindowWidth : kScreenSize.width-100,
+            kTitleTop : AVTitleTop,
+            kTitleHeight : 30.0,
+            kWindowWidth : self.kScreenSize.width-100,
             kTextHeight : 0.0,
             kTextViewdHeight : 0.0,
             kButtonHeight : 65,
-            kTitleFont: UIFont(name: "HelveticaNeue", size: AVTitleFontSize)!,
+            kTitleFont: UIFont(name: "HelveticaNeue-Bold", size: AVTitleFontSize)!,
             kTextFont: UIFont(name: "HelveticaNeue", size: 14)!,
             kButtonFont: UIFont(name: "HelveticaNeue-Bold", size: AVButtonFontSize)!,
-            showCloseButton: false,
+            showCloseButton: true,
             showCircularIcon: false,
             shouldAutoDismiss: true,
             hideWhenBackgroundViewIsTapped: true
         )
-        let color1 = UIColor.init(red: 26/255, green: 39/255, blue: 138/255, alpha: 1)
-        let color2 = UIColor.init(red: 82/255, green: 38/255, blue: 138/255, alpha: 1)
         let alert = SCLAlertView(appearance: appearance)
-        _ = alert.addButton("一般出勤", backgroundColor:color1) {
-            let appearance = SCLAlertView.SCLAppearance(
-                kTitleTop : AVTitleTop,
-                kTitleHeight : 30.0,
-                kWindowWidth : self.kScreenSize.width-100,
-                kTextHeight : 0.0,
-                kTextViewdHeight : 0.0,
-                kButtonHeight : 65,
-                kTitleFont: UIFont(name: "HelveticaNeue-Bold", size: AVTitleFontSize)!,
-                kTextFont: UIFont(name: "HelveticaNeue", size: 14)!,
-                kButtonFont: UIFont(name: "HelveticaNeue-Bold", size: AVButtonFontSize)!,
-                showCloseButton: true,
-                showCircularIcon: false,
-                shouldAutoDismiss: true,
-                hideWhenBackgroundViewIsTapped: true
-            )
-            let alert = SCLAlertView(appearance: appearance)
-            
-            let icon = UIImage(named:"yonghu.png")
-            let color = UIColor.init(red: 89/255, green: 95/255, blue: 144/255, alpha: 1)
-
-            _ = alert.showCustom("おはようございます！", subTitle: "", color: color, icon: icon!, closeButtonTitle:"確　認")
-            
-            // 改变按钮状态
-            self.homeButtonVM.requestData(state: "0", workContent: "", position: self.location , positionLocal: self.locationName ,dkKind: "0") {
-                self.setupHomeVM()
-                self.setupViews()
-            }
-            self.setupButtonState(state: "0")
-        }
-        
-        _ = alert.addButton("直　行", backgroundColor:color2) {
-            let appearance = SCLAlertView.SCLAppearance(
-                kTitleTop : AVTitleTop,
-                kTitleHeight : 30.0,
-                kWindowWidth : self.kScreenSize.width-100,
-                kTextHeight : 0.0,
-                kTextViewdHeight : 0.0,
-                kButtonHeight : 65,
-                kTitleFont: UIFont(name: "HelveticaNeue-Bold", size: AVTitleFontSize)!,
-                kTextFont: UIFont(name: "HelveticaNeue", size: 14)!,
-                kButtonFont: UIFont(name: "HelveticaNeue-Bold", size: AVButtonFontSize)!,
-                showCloseButton: true,
-                showCircularIcon: false,
-                shouldAutoDismiss: true,
-                hideWhenBackgroundViewIsTapped: true
-            )
-            let alert = SCLAlertView(appearance: appearance)
-            
-            let icon = UIImage(named:"yonghu.png")
-            let color = UIColor.init(red: 89/255, green: 95/255, blue: 144/255, alpha: 1)
-
-            _ = alert.showCustom("おはようございます！", subTitle: "", color: color, icon: icon!, closeButtonTitle:"確　認")
-            // 改变按钮状态
-            self.homeButtonVM.requestData(state: "0", workContent: "", position: self.location , positionLocal: self.locationName ,dkKind: "1") {
-                self.setupHomeVM()
-                self.setupViews()
-            }
-            self.setupButtonState(state: "0")
-        }
-        
+        let color1 = UIColor.init(red: 89/255, green: 95/255, blue: 144/255, alpha: 1)
         let icon = UIImage(named:"yonghu.png")
-        let color = UIColor.orange
-        _ = alert.showCustom("", subTitle: "", color: color, icon: icon!)
+        let color = UIColor.init(red: 100/255, green: 100/255, blue: 100/255, alpha: 1)
+        _ = alert.addButton("はい", backgroundColor:color1) {
+            // 改变按钮状态
+            self.homeButtonVM.requestData(state: "0", workContent: "", position: self.location , positionLocal: self.locationName,dkKind: "0") {
+                self.setupHomeVM()
+                self.setupViews()
+            }
+            self.setupButtonState(state: "0")
+        }
+        _ = alert.showCustom("出勤よろしいですか?", subTitle: "", color: color, icon: icon!, closeButtonTitle:"いいえ")
         
     }
     
     /// 休息开始按钮点击
     @IBAction func TouchReturn(sender: AnyObject) {
+        locationManager.startUpdatingLocation()
         let appearance = SCLAlertView.SCLAppearance(
             kTitleTop : AVTitleTop,
             kTitleHeight : 30.0,
@@ -404,6 +438,7 @@ class HomeViewController: UIViewController {
     
     /// 休息结束按钮点击
     @IBAction func TouchBreak(sender: AnyObject) {
+        locationManager.startUpdatingLocation()
         let appearance = SCLAlertView.SCLAppearance(
             kTitleTop : AVTitleTop,
             kTitleHeight : 30.0,
@@ -440,91 +475,122 @@ class HomeViewController: UIViewController {
     
     /// 退勤按钮点击
     @IBAction func TouchEnd(sender: AnyObject) {
+//        let appearance = SCLAlertView.SCLAppearance(
+//            kTitleTop : 0.0,
+//            kTitleHeight : 0.0,
+//            kWindowWidth : kScreenSize.width-100,
+//            kTextHeight : 0.0,
+//            kTextViewdHeight : 0.0,
+//            kButtonHeight : 65,
+//            kTitleFont: UIFont(name: "HelveticaNeue", size: AVTitleFontSize)!,
+//            kTextFont: UIFont(name: "HelveticaNeue", size: 14)!,
+//            kButtonFont: UIFont(name: "HelveticaNeue-Bold", size: AVButtonFontSize)!,
+//            showCloseButton: false,
+//            showCircularIcon: false,
+//            shouldAutoDismiss: true,
+//            hideWhenBackgroundViewIsTapped: true
+//        )
+//        let color1 = UIColor.init(red: 138/255, green: 78/255, blue: 26/255, alpha: 1)
+//        let color2 = UIColor.init(red: 138/255, green: 38/255, blue: 38/255, alpha: 1)
+//        let alert = SCLAlertView(appearance: appearance)
+//        _ = alert.addButton("一般退勤", backgroundColor:color1) {
+//            let appearance = SCLAlertView.SCLAppearance(
+//                kTitleTop : AVTitleTop,
+//                kTitleHeight : 30.0,
+//                kWindowWidth : self.kScreenSize.width-100,
+//                kTextHeight : 0.0,
+//                kTextViewdHeight : 0.0,
+//                kButtonHeight : 65,
+//                kTitleFont: UIFont(name: "HelveticaNeue-Bold", size: AVTitleFontSize)!,
+//                kTextFont: UIFont(name: "HelveticaNeue", size: 14)!,
+//                kButtonFont: UIFont(name: "HelveticaNeue-Bold", size: AVButtonFontSize)!,
+//                showCloseButton: true,
+//                showCircularIcon: false,
+//                shouldAutoDismiss: true,
+//                hideWhenBackgroundViewIsTapped: true
+//            )
+//            let alert = SCLAlertView(appearance: appearance)
+//            let icon = UIImage(named:"yonghu.png")
+//            let color = UIColor.init(red: 89/255, green: 95/255, blue: 144/255, alpha: 1)
+//            _ = alert.showCustom("お疲れ様でした。", subTitle: "", color: color, icon: icon!, closeButtonTitle:"確　認")
+//
+//            // 改变按钮状态
+//            self.homeButtonVM.requestData(state: "3", workContent: "", position: self.location , positionLocal: self.locationName, dkKind: "0") {
+//                self.setupHomeVM()
+//                self.setupViews()
+//            }
+//            self.setupButtonState(state: "3")
+//        }
+//
+//        _ = alert.addButton("直  帰", backgroundColor:color2) {
+//            let appearance = SCLAlertView.SCLAppearance(
+//                kTitleTop : AVTitleTop,
+//                kTitleHeight : 30.0,
+//                kWindowWidth : self.kScreenSize.width-100,
+//                kTextHeight : 0.0,
+//                kTextViewdHeight : 0.0,
+//                kButtonHeight : 65,
+//                kTitleFont: UIFont(name: "HelveticaNeue-Bold", size: AVTitleFontSize)!,
+//                kTextFont: UIFont(name: "HelveticaNeue", size: 14)!,
+//                kButtonFont: UIFont(name: "HelveticaNeue-Bold", size: AVButtonFontSize)!,
+//                showCloseButton: true,
+//                showCircularIcon: false,
+//                shouldAutoDismiss: true,
+//                hideWhenBackgroundViewIsTapped: true
+//            )
+//            let alert = SCLAlertView(appearance: appearance)
+//
+//            let icon = UIImage(named:"yonghu.png")
+//            let color = UIColor.init(red: 89/255, green: 95/255, blue: 144/255, alpha: 1)
+//
+//            _ = alert.showCustom("お疲れ様でした。", subTitle: "", color: color, icon: icon!, closeButtonTitle:"確　認")
+//
+//            // 改变按钮状态
+//            self.homeButtonVM.requestData(state: "3", workContent: "", position: self.location , positionLocal: self.locationName, dkKind: "1") {
+//
+//                self.setupHomeVM()
+//                self.setupViews()
+//            }
+//            self.setupButtonState(state: "3")
+//
+//        }
+//
+//        let icon = UIImage(named:"yonghu.png")
+//        let color = UIColor.orange
+//        _ = alert.showCustom("", subTitle: "", color: color, icon: icon!)
+//
+        locationManager.startUpdatingLocation()
         let appearance = SCLAlertView.SCLAppearance(
-            kTitleTop : 0.0,
-            kTitleHeight : 0.0,
-            kWindowWidth : kScreenSize.width-100,
+            kTitleTop : AVTitleTop,
+            kTitleHeight : 30.0,
+            kWindowWidth : self.kScreenSize.width-100,
             kTextHeight : 0.0,
             kTextViewdHeight : 0.0,
             kButtonHeight : 65,
-            kTitleFont: UIFont(name: "HelveticaNeue", size: AVTitleFontSize)!,
+            kTitleFont: UIFont(name: "HelveticaNeue-Bold", size: AVTitleFontSize)!,
             kTextFont: UIFont(name: "HelveticaNeue", size: 14)!,
             kButtonFont: UIFont(name: "HelveticaNeue-Bold", size: AVButtonFontSize)!,
-            showCloseButton: false,
+            showCloseButton: true,
             showCircularIcon: false,
             shouldAutoDismiss: true,
             hideWhenBackgroundViewIsTapped: true
         )
-        let color1 = UIColor.init(red: 138/255, green: 78/255, blue: 26/255, alpha: 1)
-        let color2 = UIColor.init(red: 138/255, green: 38/255, blue: 38/255, alpha: 1)
         let alert = SCLAlertView(appearance: appearance)
-        _ = alert.addButton("一般退勤", backgroundColor:color1) {
-            let appearance = SCLAlertView.SCLAppearance(
-                kTitleTop : AVTitleTop,
-                kTitleHeight : 30.0,
-                kWindowWidth : self.kScreenSize.width-100,
-                kTextHeight : 0.0,
-                kTextViewdHeight : 0.0,
-                kButtonHeight : 65,
-                kTitleFont: UIFont(name: "HelveticaNeue-Bold", size: AVTitleFontSize)!,
-                kTextFont: UIFont(name: "HelveticaNeue", size: 14)!,
-                kButtonFont: UIFont(name: "HelveticaNeue-Bold", size: AVButtonFontSize)!,
-                showCloseButton: true,
-                showCircularIcon: false,
-                shouldAutoDismiss: true,
-                hideWhenBackgroundViewIsTapped: true
-            )
-            let alert = SCLAlertView(appearance: appearance)
-            let icon = UIImage(named:"yonghu.png")
-            let color = UIColor.init(red: 89/255, green: 95/255, blue: 144/255, alpha: 1)
-            _ = alert.showCustom("お疲れ様でした。", subTitle: "", color: color, icon: icon!, closeButtonTitle:"確　認")
-            
+        let color1 = UIColor.init(red: 89/255, green: 95/255, blue: 144/255, alpha: 1)
+        let icon = UIImage(named:"yonghu.png")
+        let color = UIColor.init(red: 100/255, green: 100/255, blue: 100/255, alpha: 1)
+        _ = alert.addButton("はい", backgroundColor:color1) {
             // 改变按钮状态
             self.homeButtonVM.requestData(state: "3", workContent: "", position: self.location , positionLocal: self.locationName, dkKind: "0") {
+                //                MessageView.Setup(messageObject : "業務終了成功" as AnyObject,
+                //                                  contentView   : UIWindow.getKeyWindow(),
+                //                                  delegate      : self as? BaseMessageViewDelegate).show()
                 self.setupHomeVM()
                 self.setupViews()
             }
             self.setupButtonState(state: "3")
         }
-        
-        _ = alert.addButton("直  帰", backgroundColor:color2) {
-            let appearance = SCLAlertView.SCLAppearance(
-                kTitleTop : AVTitleTop,
-                kTitleHeight : 30.0,
-                kWindowWidth : self.kScreenSize.width-100,
-                kTextHeight : 0.0,
-                kTextViewdHeight : 0.0,
-                kButtonHeight : 65,
-                kTitleFont: UIFont(name: "HelveticaNeue-Bold", size: AVTitleFontSize)!,
-                kTextFont: UIFont(name: "HelveticaNeue", size: 14)!,
-                kButtonFont: UIFont(name: "HelveticaNeue-Bold", size: AVButtonFontSize)!,
-                showCloseButton: true,
-                showCircularIcon: false,
-                shouldAutoDismiss: true,
-                hideWhenBackgroundViewIsTapped: true
-            )
-            let alert = SCLAlertView(appearance: appearance)
-            
-            let icon = UIImage(named:"yonghu.png")
-            let color = UIColor.init(red: 89/255, green: 95/255, blue: 144/255, alpha: 1)
-
-            _ = alert.showCustom("お疲れ様でした。", subTitle: "", color: color, icon: icon!, closeButtonTitle:"確　認")
-            
-            // 改变按钮状态
-            self.homeButtonVM.requestData(state: "3", workContent: "", position: self.location , positionLocal: self.locationName, dkKind: "1") {
-                
-                self.setupHomeVM()
-                self.setupViews()
-            }
-            self.setupButtonState(state: "3")
-        
-        }
-        
-        let icon = UIImage(named:"yonghu.png")
-        let color = UIColor.orange
-        _ = alert.showCustom("", subTitle: "", color: color, icon: icon!)
-        
-        
+        _ = alert.showCustom("退勤よろしいですか?", subTitle: "", color: color, icon: icon!, closeButtonTitle:"いいえ")
     }
     // 工作内容点击事件
     @IBAction func workContentAction(_ sender: Any) {
@@ -701,13 +767,15 @@ extension HomeViewController: CLLocationManagerDelegate {
         var location = String()
         East = newLocation.coordinate.latitude
         Noth = newLocation.coordinate.longitude
-//        location="経度：".appendingFormat("%.8f", East)+" "+"経度：".appendingFormat("%.8f", Noth)
         location="".appendingFormat("%.8f", East)+"/".appendingFormat("%.8f", Noth)
-        locationManager.stopUpdatingLocation()
+        
+//        locationManager.stopUpdatingLocation()
+        
+        
         let changeLocation:NSArray =  locations as NSArray
         let currentLocation = changeLocation.lastObject as! CLLocation
         let geoCoder = CLGeocoder()
-        print("坐标 --  \(location)")
+
         geoCoder.reverseGeocodeLocation(currentLocation) { (placemarks, error) in
             if((placemarks?.count)! > 0){
                 let placeMark = placemarks?.first

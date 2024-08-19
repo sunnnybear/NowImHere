@@ -10,7 +10,7 @@ import UIKit
 
 class GCMarqueeItem: UIView {
     
-    private let titleFont: CGFloat = 17.0;
+    private let titleFont: CGFloat = 16.0;
     private let padding: CGFloat = 0.0;
     private let icon_title_margin: CGFloat = 0.0;
     private let defaultHeight: CGFloat = 40.0;
