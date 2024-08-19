@@ -767,13 +767,15 @@ extension HomeViewController: CLLocationManagerDelegate {
         var location = String()
         East = newLocation.coordinate.latitude
         Noth = newLocation.coordinate.longitude
-//        location="経度：".appendingFormat("%.8f", East)+" "+"経度：".appendingFormat("%.8f", Noth)
         location="".appendingFormat("%.8f", East)+"/".appendingFormat("%.8f", Noth)
+        
 //        locationManager.stopUpdatingLocation()
+        
+        
         let changeLocation:NSArray =  locations as NSArray
         let currentLocation = changeLocation.lastObject as! CLLocation
         let geoCoder = CLGeocoder()
-        print("坐标 --  \(location)")
+
         geoCoder.reverseGeocodeLocation(currentLocation) { (placemarks, error) in
             if((placemarks?.count)! > 0){
                 let placeMark = placemarks?.first
